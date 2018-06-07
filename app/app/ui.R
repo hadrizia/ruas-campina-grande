@@ -26,6 +26,7 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
+        
        selectInput('profissoes', 'Selecione uma ou mais profissões:', 
                    profissoes_nos_dados, multiple = TRUE, 
                    selected = sample(profissoes_nos_dados, 1)),
@@ -37,5 +38,17 @@ shinyUI(fluidPage(
     mainPanel(
        plotOutput("prof_ruas_plot")
     )
+  ),
+  sidebarLayout(
+      sidebarPanel(
+          helpText("A partir do nome de uma rua, pode-se observar o quanto a rua possui com bancos e árvores"),
+          sliderInput('comprimento', 'label', 20, 200, value = 25)
+      ),
+      
+      
+      # Show a plot of the generated distribution
+      mainPanel(
+          plotOutput("algo")
+      )
   )
 ))
